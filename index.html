@@ -21,7 +21,7 @@
     .floating-flower {
       position: absolute;
       color: black;
-      font-size: 4rem; /* Big flowers */
+      font-size: 4rem;
       animation: float 10s linear infinite;
       opacity: 0.7;
     }
@@ -39,14 +39,12 @@
       white-space: nowrap;
       overflow: hidden;
       display: inline-block;
-      animation: typing 3.5s steps(19, end), blink 0.7s step-end infinite;
-
+      animation: typing 4s steps(19, end), blink 0.7s step-end infinite;
     }
     @keyframes typing {
-        from { width: 0ch; }
-        to { width: 19ch; } /* matches new text length */
+      from { width: 0ch; }
+      to { width: 19ch; } /* matches "I am sorry pankhuri" */
     }
-
     @keyframes blink {
       50% { border-color: transparent; }
     }
@@ -68,9 +66,9 @@
       color: white;
     }
 
-    /* Modal (dialog box) */
+    /* Modal */
     .modal {
-      display: none; 
+      display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -82,10 +80,11 @@
       background: white;
       padding: 30px;
       border-radius: 15px;
-      max-width: 500px;
+      max-width: 600px;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #333;
+      line-height: 1.6;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       animation: pop 0.3s ease;
     }
@@ -113,7 +112,7 @@
   <span class="floating-flower" style="left:80%; animation-delay:3s;">🌻</span>
 
   <!-- Main apology -->
-  <div class="message">I am sorry Pankhuri 🌸</div>
+  <div class="message">I am sorry pankhuri</div>
 
   <!-- Button -->
   <button onclick="openModal()">Open Me</button>
@@ -122,20 +121,38 @@
   <div class="modal" id="myModal">
     <div class="modal-content">
       <p>
-        🌸 I am really really sorry Pankhuri. Sometimes I act like a total idiot and say silly
-         things without thinking… but I promise I never ever mean to hurt you. I know my ‘majak’
-          can hurt sometimes, and I hate that. You are my happiness, my effort will always be for us,
-           even if I fall short sometimes. You deserve the world, and I’ll keep trying to give it to you
-            I love you sooo sooo much baby, forever and always. 💕
+        🌸 Pankhuri,<br><br>
+        I am really, really sorry… sometimes I act like an idiot and say things without thinking.  
+        I know my "majak" can hurt sometimes, but please believe me — I never, ever mean to hurt you. 💕<br><br>
+        You are my love, my world, and even if my efforts feel small compared to yours, I promise I’ll keep trying for us, for you.  
+        You deserve the whole universe, baby. 🌍✨<br><br>
+        I love you sooo sooo much. Forever and always. ❤️
       </p>
       <button class="close" onclick="closeModal()">Close</button>
     </div>
   </div>
 
+  <!-- Background music -->
+  <audio id="bg-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
+    const music = document.getElementById("bg-music");
+
     function openModal() {
       document.getElementById("myModal").style.display = "flex";
+
+      // play music reliably on button click
+      music.volume = 0.5;
+      music.play().catch(() => {
+        // fallback if still blocked
+        music.muted = true;
+        music.play();
+        setTimeout(() => music.muted = false, 500);
+      });
     }
+
     function closeModal() {
       document.getElementById("myModal").style.display = "none";
     }
