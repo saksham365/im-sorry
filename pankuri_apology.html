@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorry 🌸</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #ffe6f0; /* soft light pink */
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Floating flowers */
+    .floating-flower {
+      position: absolute;
+      color: black;
+      font-size: 4rem; /* Big flowers */
+      animation: float 10s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    /* Typing effect */
+    .message {
+      color: black;
+      font-size: 3rem;
+      border-right: 2px solid black;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 3.5s steps(19, end), blink 0.7s step-end infinite;
+
+    }
+    @keyframes typing {
+        from { width: 0ch; }
+        to { width: 19ch; } /* matches new text length */
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Button */
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background: black;
+      color: #ffe6f0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    /* Modal (dialog box) */
+    .modal {
+      display: none; 
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #333;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: pop 0.3s ease;
+    }
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .close {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating flowers -->
+  <span class="floating-flower" style="left:10%; animation-delay:0s;">🌸</span>
+  <span class="floating-flower" style="left:25%; animation-delay:2s;">🌷</span>
+  <span class="floating-flower" style="left:40%; animation-delay:4s;">🌹</span>
+  <span class="floating-flower" style="left:60%; animation-delay:1s;">🌺</span>
+  <span class="floating-flower" style="left:80%; animation-delay:3s;">🌻</span>
+
+  <!-- Main apology -->
+  <div class="message">I am sorry Pankhuri 🌸</div>
+
+  <!-- Button -->
+  <button onclick="openModal()">Open Me</button>
+
+  <!-- Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <p>
+        🌸 I am really really sorry Pankhuri. Sometimes I act like a total idiot and say silly
+         things without thinking… but I promise I never ever mean to hurt you. I know my ‘majak’
+          can hurt sometimes, and I hate that. You are my happiness, my effort will always be for us,
+           even if I fall short sometimes. You deserve the world, and I’ll keep trying to give it to you
+            I love you sooo sooo much baby, forever and always. 💕
+      </p>
+      <button class="close" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("myModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
